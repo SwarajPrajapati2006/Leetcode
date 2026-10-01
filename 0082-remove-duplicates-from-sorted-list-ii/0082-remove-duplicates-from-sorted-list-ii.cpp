@@ -13,25 +13,24 @@ public:
     ListNode* deleteDuplicates(ListNode* head) {
         unordered_map<int,int>m1;
 
-        ListNode* temp =  head;
+        ListNode* temp = head;
+
         while(temp){
             m1[temp->val]++;
-            temp =  temp->next;
+            temp=  temp->next;
         }
 
-        ListNode* dummy =  new ListNode(0);
-        temp = head;
-        ListNode* curr = dummy;
+        ListNode* dummy = new ListNode(0);
+        ListNode* curr =  dummy;
+        temp  = head;
         while(temp){
             if(m1[temp->val]==1){
-                ListNode* singleFreq =  new ListNode(temp->val);
-                    curr->next =  singleFreq;
-                 curr =  curr->next;
+                ListNode* single =  new ListNode(temp->val);
+                curr->next =  single;
+                curr = curr->next;
             }
-            temp =  temp->next;
+            temp= temp->next;
         }
-
         return dummy->next;
-
     }
 };
